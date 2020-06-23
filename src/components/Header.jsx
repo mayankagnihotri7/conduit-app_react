@@ -5,9 +5,9 @@ function Header(props) {
     <header className="header padding">
       <div className="container">
         <nav className="flex">
-          <a href="#" className="logo">
-            <h2>Conduit</h2>
-          </a>
+          <button className="logo-btn" onClick={props.click}>
+            Conduit
+          </button>
           <ul className="flex navigation">
             <button className="header-btn" onClick={props.click}>
               Home

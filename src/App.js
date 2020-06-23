@@ -35,7 +35,6 @@ class App extends React.Component {
       fetch(`https://conduit.productionready.io/api/articles?limit=10&offset=0`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data, "hi");
           this.setState({ articles: data.articles, filtered: tagName });
         });
     } else {
@@ -50,8 +49,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.articles);
-    console.log(this.state.tags);
     return (
       <>
         <Header click={() => this.handleTags("all")} />

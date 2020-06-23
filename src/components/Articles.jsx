@@ -5,23 +5,32 @@ function Articles(props) {
   return (
     <>
       <section className="article-color" key={uuid()}>
-        <button className="header-btn" onClick={() => props.handleTags("all")}>
-          News Feed
-        </button>
-        <li>
-          {props.filtered !== "all" ? (
-            <button onClick={() => props.handleTags(props.filtered)} className='header-btn'>
-              #{props.filtered}
-            </button>
-          ) : (
-            ""
-          )}
-        </li>
+        <ul className="section-btn">
+          <button
+            className="header-btn"
+            onClick={() => props.handleTags("all")}
+          >
+            News Feed
+          </button>
+          <li>
+            {props.filtered !== "all" ? (
+              <button
+                onClick={() => props.handleTags(props.filtered)}
+                className="header-btn header-switch"
+              >
+                #{props.filtered}
+              </button>
+            ) : (
+              ""
+            )}
+          </li>
+        </ul>
+
         {props.articles.map((article) => {
           return (
             <div className="container" key={uuid()}>
               <div className="grid flex">
-                <div className="border">
+                <div className="border text-align">
                   <img
                     src={article.author.image}
                     alt="coming-soon"

@@ -135,6 +135,7 @@ table {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.2;
 }
 
 .container {
@@ -150,14 +151,17 @@ body {
 .navigation > a {
   margin-left: 1rem;
   font-size: 1.2rem;
-  color: #FCC3A3;
+  color: #fcc3a3;
   text-decoration: none;
 }
 
-.logo {
+.logo-btn {
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
   font-size: 1.8rem;
-  color: #FCC3A3;
+  color: #fcc3a3;
 }
 
 .padding {
@@ -165,7 +169,7 @@ body {
 }
 
 .header {
-  background-color: #632B6C;
+  background-color: #632b6c;
 }
 
 .text-align {
@@ -173,7 +177,7 @@ body {
 }
 
 .color {
-  background-color: #C76B98;
+  background-color: #c76b98;
   height: 150px;
 }
 
@@ -234,7 +238,6 @@ body {
 }
 
 .tags-border {
-  /* border: 1px solid burlywood; */
   padding: 10px;
   outline: none;
 }
@@ -251,13 +254,12 @@ body {
   padding: 5px;
 }
 
-/* .border {
-  border-bottom: 1px solid black;
-  width: 100%;
-} */
+.section-btn {
+  display: flex;
+}
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 .heading-section {
@@ -265,36 +267,52 @@ li {
 }
 
 .section-img {
-    height: 150px;
-    border-radius: 50%;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .fork {
-    text-decoration: none;
-    font-size: 20px;
-    letter-spacing: 1rem;
-    outline: none;
-    color: #FCC3A3;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 1rem;
+  outline: none;
+  color: #fcc3a3;
 }
 
 .footer {
-    background-color: #F09F9C;
-    bottom: 0;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
+  background-color: #f09f9c;
+  bottom: 0;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .header-btn {
-    background-color: transparent;
-    color: #FCC3A3;
-    font-size: 18px;
-    border: none;
-    outline: none;
+  background-color: transparent;
+  color: #632B6C;
+  font-size: 18px;
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+}
+
+.header-switch {
+    color: cornflowerblue;
+}
+
+.tags-heading {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+
+.border {
+  margin-bottom: 3rem;
+  text-align: justify;
 }
 
 /* 632B6C */

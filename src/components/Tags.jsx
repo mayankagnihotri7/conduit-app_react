@@ -4,7 +4,7 @@ import uuid from "react-uuid";
 function Tags(props) {
   return (
     <div className="tags-border">
-      <h1 className="text-align">Popular Tags:</h1>
+      <h1 className="text-align tags-heading">Popular Tags:</h1>
       <div className="section-grid">
         {props.tags.map((tag) => {
           return (
