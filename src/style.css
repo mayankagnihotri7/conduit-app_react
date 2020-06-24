@@ -194,7 +194,7 @@ body {
 }
 
 .grid {
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .section-heading {
@@ -293,11 +293,16 @@ button:hover {
 
 .header-btn {
   background-color: transparent;
-  color: #632B6C;
+  color:blanchedalmond;
   font-size: 18px;
   margin: 1rem 0;
   border: none;
   outline: none;
+}
+
+.header-btn_feed {
+  color: brown;
+  font-size: 20px;
 }
 
 .header-switch {
@@ -315,7 +320,50 @@ button:hover {
   text-align: justify;
 }
 
-/* 632B6C */
-/* C76B98 */
-/* F09F9C */
-/* FCC3A3 */
+input {
+  border-radius: 10px;
+  border: none;
+  padding: 7px 0;
+  margin-bottom: 1rem;
+  width: 50%;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+input[type='submit'] {
+  border-radius: 30px;
+  font-size: 18px;
+  padding: 5px 17px;
+  font-weight: 200;
+  cursor: pointer;
+  outline: none;
+}
+
+.margin {
+  margin-top: 8rem;
+  margin-right: 8rem;
+}
+
+.register-head {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 20px 0;
+  padding-top: 1rem;
+}
+
+.register-border {
+  margin-top: 8rem;
+  margin-left: 7rem;
+  box-shadow: 1px 1px 5px 1px chocolate;
+  width: 70%;
+}
+
+.signed-in {
+  padding: 1rem;
+}
+
+a {
+  text-decoration: none;
+}

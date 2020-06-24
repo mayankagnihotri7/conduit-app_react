@@ -7,7 +7,7 @@ function Articles(props) {
       <section className="article-color" key={uuid()}>
         <ul className="section-btn">
           <button
-            className="header-btn"
+            className="header-btn header-btn_feed"
             onClick={() => props.handleTags("all")}
           >
             News Feed
