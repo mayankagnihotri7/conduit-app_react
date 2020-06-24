@@ -208,6 +208,7 @@ body {
   display: flex;
   justify-content: space-between;
   text-align: justify;
+  width: 100%;
 }
 
 .section-date {

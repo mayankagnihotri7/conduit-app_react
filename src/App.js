@@ -1,4 +1,7 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Articles from "./components/Articles";
@@ -54,15 +57,32 @@ class App extends React.Component {
         <Header click={() => this.handleTags("all")} />
         <Main />
         <div className="container section-flex">
-          <Articles
+          <Switch>
+            <Route
+              path="/"
+              component={() => (
+                <Articles
+                  articles={this.state.articles}
+                  handleTags={this.handleTags}
+                  filtered={this.state.filtered}
+                  tags={this.state.tags}
+                  tagChange={(tagName) => this.handleTags(tagName)}
+                />
+              )}
+              exact
+            />
+            <Route path="/signIn" component={SignIn} exact />
+            <Route path="/signUp" component={SignUp} exact />
+          </Switch>
+          {/* <Tags
+            tags={this.state.tags}
+            tagChange={(tagName) => this.handleTags(tagName)}
+          /> */}
+          {/* <Articles
             articles={this.state.articles}
             handleTags={this.handleTags}
             filtered={this.state.filtered}
-          />
-          <Tags
-            tags={this.state.tags}
-            tagChange={(tagName) => this.handleTags(tagName)}
-          />
+          /> */}
         </div>
         <Footer />
       </>
