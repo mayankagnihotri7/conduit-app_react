@@ -10,15 +10,6 @@ function Header(props) {
             Conduit
           </button>
           <ul className="flex navigation">
-            {/* <button className="header-btn" onClick={props.click}>
-              Home
-            </button>
-            <button className="header-btn">
-              <li>Sign up</li>
-            </button>
-            <button className="header-btn">
-              <li>Sign In</li>
-            </button> */}
             <Link to="/">Home</Link>
             <Link to="/SignIn">Sign In</Link>
             <Link to="/SignUp">Sign Up</Link>

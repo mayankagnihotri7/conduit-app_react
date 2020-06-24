@@ -74,15 +74,6 @@ class App extends React.Component {
             <Route path="/signIn" component={SignIn} exact />
             <Route path="/signUp" component={SignUp} exact />
           </Switch>
-          {/* <Tags
-            tags={this.state.tags}
-            tagChange={(tagName) => this.handleTags(tagName)}
-          /> */}
-          {/* <Articles
-            articles={this.state.articles}
-            handleTags={this.handleTags}
-            filtered={this.state.filtered}
-          /> */}
         </div>
         <Footer />
       </>
