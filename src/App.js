@@ -5,7 +5,6 @@ import SignUp from './components/SignUp';
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Articles from "./components/Articles";
-import Tags from "./components/Tags";
 import Footer from "./components/Footer";
 import "./style.css";
 
@@ -60,7 +59,7 @@ class App extends React.Component {
           <Switch>
             <Route
               path="/"
-              component={() => (
+              render={() => (
                 <Articles
                   articles={this.state.articles}
                   handleTags={this.handleTags}

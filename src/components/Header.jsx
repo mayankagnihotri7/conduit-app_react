@@ -1,18 +1,21 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link, NavLink } from "react-router-dom";
 
 function Header(props) {
   return (
     <header className="header padding">
       <div className="container">
         <nav className="flex">
-          <button className="logo-btn" onClick={props.click}>
+          <Link className="logo-btn" to="/">
             Conduit
-          </button>
+          </Link>
           <ul className="flex navigation">
-            <Link to="/">Home</Link>
-            <Link to="/SignIn">Sign In</Link>
-            <Link to="/SignUp">Sign Up</Link>
+            <NavLink activeClassName="active" to="/signIn">
+              Sign In
+            </NavLink>
+            <NavLink activeClassName="active" to="/signUp">
+              Sign Up
+            </NavLink>
           </ul>
         </nav>
       </div>
