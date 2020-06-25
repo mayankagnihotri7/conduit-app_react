@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import Error from './components/Error';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Header from "./components/Header";
@@ -72,6 +73,7 @@ class App extends React.Component {
             />
             <Route path="/signIn" component={SignIn} exact />
             <Route path="/signUp" component={SignUp} exact />
+            <Route component={Error} />
           </Switch>
         </div>
         <Footer />
