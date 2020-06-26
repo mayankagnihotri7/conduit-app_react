@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Error from './components/Error';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+import Error from "./components/Error";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Articles from "./components/Articles";
+import Loader from './components/Loader';
 import Footer from "./components/Footer";
 import "./style.css";
 
@@ -16,6 +17,8 @@ class App extends React.Component {
       articles: [],
       tags: [],
       filtered: "all",
+      isLoggedIn: localStorage.getItem("authToken") ? true : false,
+      userInfo: null,
     };
   }
 
@@ -31,6 +34,21 @@ class App extends React.Component {
     fetch(`https://conduit.productionready.io/api/tags`)
       .then((res) => res.json())
       .then((data) => this.setState({ tags: data.tags }));
+
+    if (localStorage.authToken) {
+      let url = "https://conduit.productionready.io/api/user";
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Token ${localStorage.authToken}`,
+        },
+      })
+        .then((res) => res.json())
+        .then(({ user }) => {
+          this.setState({ isLoggedIn: true, userInfo: user });
+        }).catch(err => this.setState({isLoggedIn: false}));
+    }
   }
 
   handleTags = (tagName) => {
@@ -51,10 +69,20 @@ class App extends React.Component {
     }
   };
 
+  updateLoggedIn = (status) => {
+    this.setState({ isLoggedIn: status });
+    console.log(this.state, "state");
+  };
+
   render() {
+    let { isLoggedIn } = this.state;
+    if (!isLoggedIn) {
+      return <Loader />
+    }
+
     return (
       <>
-        <Header click={() => this.handleTags("all")} />
+        <Header click={() => this.handleTags("all")} isLoggedIn={isLoggedIn} />
         <Main />
         <div className="container section-flex">
           <Switch>
@@ -71,8 +99,11 @@ class App extends React.Component {
               )}
               exact
             />
-            <Route path="/signIn" component={SignIn} exact />
-            <Route path="/signUp" component={SignUp} exact />
+            <Route
+              path="/signIn"
+              render={() => <SignIn updateLoggedIn={this.updateLoggedIn} />}
+            />
+            <Route path="/signUp" component={SignUp} />
             <Route component={Error} />
           </Switch>
         </div>

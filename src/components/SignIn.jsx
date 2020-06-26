@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -7,6 +7,7 @@ class SignIn extends React.Component {
     this.state = {
       email: "",
       password: "",
+      error: ''
     };
   }
 
@@ -23,12 +24,18 @@ class SignIn extends React.Component {
     }).then((res) => {
       if (res.status === 200) {
         this.props.history.push("/");
+        this.props.updateLoggedIn(true);
+        return res.json();
+      } else {
+        this.setState({error: 'Something went wrong!'})
       }
-    });
+    }).then(({user}) => {
+      user && localStorage.setItem('authToken', user.token)
+    })
   };
 
   render() {
-    let { email, password } = this.state;
+    let { email, password, error } = this.state;
 
     return (
       <div className="register-border text-align">
@@ -48,6 +55,7 @@ class SignIn extends React.Component {
             placeholder="Enter password..."
             value={password}
           />
+          <p>{error && error}</p>
           <input type="submit" value="Sign In" onClick={this.handleSubmit} />
         </div>
         <div className="signed-in">
@@ -60,4 +68,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

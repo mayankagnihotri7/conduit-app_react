@@ -10,17 +10,41 @@ function Header(props) {
             Conduit
           </Link>
           <ul className="flex navigation">
-            <NavLink activeClassName="active" to="/signIn">
-              Sign In
-            </NavLink>
-            <NavLink activeClassName="active" to="/signUp">
-              Sign Up
-            </NavLink>
+            {props.isLoggedIn ? <AuthHeader /> : <NonAuthHeader/>}
           </ul>
         </nav>
       </div>
     </header>
   );
 }
+
+const NonAuthHeader = () => {
+  return(<>
+    <NavLink activeClassName="active" to="/signIn">
+      Sign In
+    </NavLink>
+    <NavLink activeClassName="active" to="/signUp">
+      Sign Up
+    </NavLink>
+  </>)
+};
+
+const AuthHeader = () => {
+
+  return (<>
+    <NavLink activeClassName="active" to="/signIn">
+      Home
+    </NavLink>
+    <NavLink activeClassName="active" to="/signUp">
+      New
+    </NavLink>
+    <NavLink activeClassName="active" to="/signUp">
+      Settings
+    </NavLink>
+    <NavLink activeClassName="active" to="/signUp">
+      Profile
+    </NavLink>
+  </>)
+};
 
 export default Header;
