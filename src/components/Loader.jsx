@@ -3,15 +3,7 @@ import "./loader.css";
 
 const Loader = () => {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className='loader'>
       <div class="bouncing-loader">
         <div></div>
         <div></div>

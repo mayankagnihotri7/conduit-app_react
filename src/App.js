@@ -6,7 +6,9 @@ import SignUp from "./components/SignUp";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Articles from "./components/Articles";
-import Loader from './components/Loader';
+import CreateArticle from './components/CreateArticle';
+import SingleArticle from './components/SingleArticle';
+import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import "./style.css";
 
@@ -47,7 +49,8 @@ class App extends React.Component {
         .then((res) => res.json())
         .then(({ user }) => {
           this.setState({ isLoggedIn: true, userInfo: user });
-        }).catch(err => this.setState({isLoggedIn: false}));
+        })
+        .catch((err) => this.setState({ isLoggedIn: false }));
     }
   }
 
@@ -71,13 +74,13 @@ class App extends React.Component {
 
   updateLoggedIn = (status) => {
     this.setState({ isLoggedIn: status });
-    console.log(this.state, "state");
   };
 
   render() {
     let { isLoggedIn } = this.state;
+
     if (!isLoggedIn) {
-      return <Loader />
+      return <Loader />;
     }
 
     return (
@@ -101,9 +104,11 @@ class App extends React.Component {
             />
             <Route
               path="/signIn"
-              render={() => <SignIn updateLoggedIn={this.updateLoggedIn} />}
+              render={() => < SignIn updateLoggedIn={this.updateLoggedIn} />}
             />
+            <Route path='/create' component={CreateArticle} />
             <Route path="/signUp" component={SignUp} />
+            <Route path='/articles/:slug' component={SingleArticle} />
             <Route component={Error} />
           </Switch>
         </div>

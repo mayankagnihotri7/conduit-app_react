@@ -35,8 +35,8 @@ const AuthHeader = () => {
     <NavLink activeClassName="active" to="/signIn">
       Home
     </NavLink>
-    <NavLink activeClassName="active" to="/signUp">
-      New
+    <NavLink activeClassName="active" to="/create">
+      Create Article
     </NavLink>
     <NavLink activeClassName="active" to="/signUp">
       Settings

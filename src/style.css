@@ -229,9 +229,9 @@ body {
   font-weight: 300;
 }
 
-.margin {
+/* .margin {
   margin-bottom: 10px;
-}
+} */
 
 .section-user {
   font-size: 20px;
@@ -371,7 +371,20 @@ a {
   text-decoration: none;
 }
 
+textarea::placeholder {
+  text-align: center;
+}
+
+textarea {
+  border-radius: 10px;
+  border: none;
+}
+
 .active {
   border: 1px solid #fcc3a3;
   padding: 3px;
+}
+
+.margin-textarea {
+  margin-bottom: 1rem;
 }
