@@ -229,10 +229,6 @@ body {
   font-weight: 300;
 }
 
-/* .margin {
-  margin-bottom: 10px;
-} */
-
 .section-user {
   font-size: 20px;
   margin: 10px 0;
@@ -294,7 +290,7 @@ button:hover {
 
 .header-btn {
   background-color: transparent;
-  color:blanchedalmond;
+  color: blanchedalmond;
   font-size: 18px;
   margin: 1rem 0;
   border: none;
@@ -307,7 +303,7 @@ button:hover {
 }
 
 .header-switch {
-    color: cornflowerblue;
+  color: cornflowerblue;
 }
 
 .tags-heading {
@@ -335,7 +331,7 @@ input::placeholder {
   text-align: center;
 }
 
-input[type='submit'] {
+input[type="submit"] {
   border-radius: 30px;
   font-size: 18px;
   padding: 5px 17px;
@@ -387,4 +383,24 @@ textarea {
 
 .margin-textarea {
   margin-bottom: 1rem;
+}
+
+.margin-left {
+  margin-left: 1rem;
+}
+
+.max-width {
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.comment-image {
+  height: 100px;
+  border-radius: 50%;
+}
+
+.comment-heading {
+  text-decoration: underline;
+  font-size: 20px;
+  letter-spacing: 0.25rem;
 }
