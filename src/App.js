@@ -99,6 +99,7 @@ class App extends React.Component {
                   filtered={this.state.filtered}
                   tags={this.state.tags}
                   tagChange={(tagName) => this.handleTags(tagName)}
+                  username={userInfo}
                 />
               )}
               exact

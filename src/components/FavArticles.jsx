@@ -3,28 +3,9 @@ import { Link } from "react-router-dom";
 import uuid from "react-uuid";
 
 class FavArticles extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       articles: null,
-//     };
-//   }
-
-  //   componentDidMount() {
-  //     let { username } = this.props.username;
-  //     let url = `https://conduit.productionready.io/api/articles?favorited=${username}&limit=5&offset=0`;
-  //     fetch(url, {
-  //       method: "GET",
-  //       headers: { "Content-Type": "application/json" },
-  //       authorization: `Token ${localStorage.authToken}`,
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => this.setState({ articles: data.articles }));
-  //   }
 
   render() {
     let { articles } = this.props;
-    console.log(articles, 'hi')
     if (!articles) {
       return <h1>Nothing to show!</h1>;
     }

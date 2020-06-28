@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FavArticles from "./FavArticles";
-import uuid from "react-uuid";
 import Loader from "./Loader";
 
 class MyArticles extends Component {
@@ -52,34 +51,11 @@ class MyArticles extends Component {
 
   render() {
     let { articles } = this.state;
-    console.log(articles, "articles here...");
     if (!articles) {
       return <Loader />;
     }
     return (
       <>
-        {/* <div className="flex-2">
-          {articles.map((article) => {
-            return (
-              <div key={uuid()}>
-                <div className="border text-align">
-                  <img
-                    src={article.author.image}
-                    alt="coming-soon"
-                    className="my-article_image margin-top"
-                  />
-                  <h3 className="section-user">{article.author.username}</h3>
-                  <h5 className="section-date">
-                    {article.updatedAt.split("T")[0]}
-                  </h5>
-                  <h3 className="section-head">{article.title}</h3>
-                  <p className="section-para">{article.description}</p>
-                  <p>{article.tagList.map((tag) => tag)}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div> */}
         <FavArticles
           username={this.props.username}
           articles={this.state.articles}

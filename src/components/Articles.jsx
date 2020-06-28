@@ -32,28 +32,30 @@ class Articles extends React.Component {
 
             {this.props.articles.map((article) => {
               return (
-                <Link to={`/articles/${article.slug}`} key={uuid()}>
-                  <div className="container">
-                    <div className="grid flex">
-                      <div className="border text-align">
-                        <img
-                          src={article.author.image}
-                          alt="coming-soon"
-                          className="section-img"
-                        />
+                <div className="container" key={uuid()}>
+                  <div className="grid flex">
+                    <div className="border text-align">
+                      <img
+                        src={article.author.image}
+                        alt="coming-soon"
+                        className="section-img"
+                      />
+                      <Link to={`/profiles/${this.props.username.username}`}>
                         <h3 className="section-user">
                           {article.author.username}
                         </h3>
-                        <h5 className="section-date">
-                          {article.updatedAt.split("T")[0]}
-                        </h5>
+                      </Link>
+                      <h5 className="section-date">
+                        {article.updatedAt.split("T")[0]}
+                      </h5>
+                      <Link to={`/articles/${article.slug}`}>
                         <h3 className="section-head">{article.title}</h3>
                         <p className="section-para">{article.description}</p>
                         <p>{article.tagList.map((tag) => tag)}</p>
-                      </div>
+                      </Link>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
