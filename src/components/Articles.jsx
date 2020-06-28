@@ -32,8 +32,8 @@ class Articles extends React.Component {
 
             {this.props.articles.map((article) => {
               return (
-                <Link to={`/articles/${article.slug}`}>
-                  <div className="container" key={uuid()}>
+                <Link to={`/articles/${article.slug}`} key={uuid()}>
+                  <div className="container">
                     <div className="grid flex">
                       <div className="border text-align">
                         <img

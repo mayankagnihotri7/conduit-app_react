@@ -1,64 +1,71 @@
-import React from "react";
-import Loader from "./Loader";
+import React, { Component } from "react";
+// import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+// import Comment from "./Comment";
+// import Loader from "./Loader";
 
-class CreateComment extends React.Component {
+class CreateComment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: null,
+      body: "",
     };
   }
 
-  componentDidMount() {
-    let url = `https://conduit.productionready.io/api/articles/${this.props.slug}/comments`;
-    fetch(url, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then(({ comments }) => {
-        this.setState({ comments: comments });
-      });
-  }
+  handleInput = (event) => {
+    if (event.target.name === "body") {
+      this.setState({ body: event.target.value });
+    }
+  };
+
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    let response = await fetch(
+      `https://conduit.productionready.io/api/articles/${this.props.slug}/comments`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Token ${localStorage.authToken}`,
+        },
+        body: JSON.stringify({ comment: { body: this.state.body } }),
+      }
+    );
+    let data = await response.json();
+    if (!data.error) {
+      this.setState({ body: "" });
+      this.props.handleUpdate(true);
+    }
+  };
 
   render() {
-    console.log(this.state, "comments arriving");
-    let { comments } = this.state;
-    if (!comments) {
-      return <Loader />;
+    let { body, comments } = this.state;
+    if (comments) {
+      comments.map((comment) => console.log(comment));
     }
     return (
       <>
-        <h1 className="comment-heading">Comments:</h1>
-        {comments.map((comment) => {
-          return (
-            <>
-              <div className="max-width">
-                <div className="flex">
-                  <div className="border flex">
-                    <img
-                      src={comment.author.image}
-                      alt="coming-soon"
-                      className="comment-image"
-                    />
-                    <div className="margin-left">
-                      <h3 className="section-user">
-                        {comment.author.username}
-                      </h3>
-                      <h5 className="section-date">
-                        {comment.updatedAt.split("T")[0]}
-                      </h5>
-                      <p className="section-para">{comment.body}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          );
-        })}
+        <div className="text-align">
+          <h1 className="register-head">Let's create Comment..</h1>
+
+          <form onSubmit={this.handleSubmit}>
+            <div className="text-align">
+              <textarea
+                rows="10"
+                cols="45"
+                placeholder="Can't wait to publish!"
+                name="body"
+                onChange={this.handleInput}
+                className="margin-textarea"
+                value={body}
+              />
+              <button>Create</button>
+            </div>
+          </form>
+        </div>
       </>
     );
   }
 }
 
-export default CreateComment;
+export default withRouter(CreateComment);

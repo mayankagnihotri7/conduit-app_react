@@ -41,7 +41,7 @@ const AuthHeader = () => {
     <NavLink activeClassName="active" to="/signUp">
       Settings
     </NavLink>
-    <NavLink activeClassName="active" to="/signUp">
+    <NavLink activeClassName="active" to="/profile">
       Profile
     </NavLink>
   </>)

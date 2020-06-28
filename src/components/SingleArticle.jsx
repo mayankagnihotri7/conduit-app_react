@@ -1,5 +1,5 @@
 import React from "react";
-import CreateComment from './CreateComment';
+import Comment from "./Comment";
 import Loader from "./Loader";
 
 class SingleArticle extends React.Component {
@@ -7,6 +7,7 @@ class SingleArticle extends React.Component {
     super(props);
     this.state = {
       articleInfo: null,
+      isUpdated: false,
       slug: props.match.params.slug,
     };
   }
@@ -26,8 +27,11 @@ class SingleArticle extends React.Component {
       });
   }
 
+  handleUpdate = (boolean) => {
+    this.setState({isUpdated: boolean});
+  }
+
   render() {
-    console.log(this.state, "inside the render function");
     let { articleInfo } = this.state;
 
     if (!articleInfo) {
@@ -35,8 +39,6 @@ class SingleArticle extends React.Component {
     }
 
     let { author } = articleInfo;
-
-    console.log(author, "hello");
 
     return (
       <>
@@ -59,7 +61,7 @@ class SingleArticle extends React.Component {
               </div>
             </div>
           </div>
-          <CreateComment slug={this.state.slug} />
+          <Comment slug={this.state.slug} handleUpdate={this.handleUpdate} />
         </div>
       </>
     );
