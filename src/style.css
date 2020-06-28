@@ -404,3 +404,18 @@ textarea {
   font-size: 20px;
   letter-spacing: 0.25rem;
 }
+
+.profile-image {
+  height: 300px;
+  width: 300px;
+  border-radius: 40px;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.profile-name {
+  font-size: 25px;
+  margin-left: 4rem;
+}

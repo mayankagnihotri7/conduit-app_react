@@ -111,7 +111,7 @@ class App extends React.Component {
             <Route path="/signUp" component={SignUp} />
             <Route
               path="/profile"
-              render={() => <Profile username={userInfo.username} />}
+              render={() => <Profile username={userInfo} />}
             />
             <Route path="/articles/:slug" component={SingleArticle} />
             <Route component={Error} />
