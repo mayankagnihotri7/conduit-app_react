@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MyArticles from "./MyArticles";
 
 class Profile extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Profile extends Component {
 
   componentDidMount() {
     let { username } = this.props;
-    let url = `https://conduit.productionready.io/api/profiles/${username}`;
+    let url = `https://conduit.productionready.io/api/profiles/${username.username}`;
     fetch(url, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -21,8 +22,7 @@ class Profile extends Component {
   }
 
   render() {
-      let { username } = this.props;
-      console.log(username, "profile here");
+    let { username } = this.props;
 
     return (
       <>
@@ -35,13 +35,14 @@ class Profile extends Component {
                 className="profile-image"
               />
               <div className="margin-left">
-                <h3 className="profile-name margin-top margin-left">{username.username}</h3>
-                <h5 className="section-date">
-                  {username.bio}
-                </h5>
+                <h3 className="profile-name margin-top margin-left">
+                  {username.username}
+                </h3>
+                <h5 className="section-date">{username.bio}</h5>
               </div>
             </div>
           </div>
+          <MyArticles username={username} />
         </div>
       </>
     );

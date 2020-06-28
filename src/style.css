@@ -419,3 +419,11 @@ textarea {
   font-size: 25px;
   margin-left: 4rem;
 }
+
+.my-article_image {
+  background-position: center;
+  background-size: auto;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
