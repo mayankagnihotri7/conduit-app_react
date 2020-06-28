@@ -21,6 +21,29 @@ class Profile extends Component {
       .then((data) => this.setState({ profile: data }));
   }
 
+  handleArticles = (username) => {
+    // let { username } = this.props.username;
+    if (username === "myArticles") {
+      let url = `https://conduit.productionready.io/api/articles?author=${username}&limit=5&offset=0`;
+      fetch(url, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        authorization: `Token ${localStorage.authToken}`,
+      })
+        .then((res) => res.json())
+        .then((data) => this.setState({ articles: data.articles }));
+    } else {
+      let url = `https://conduit.productionready.io/api/articles?favorited=${username}&limit=5&offset=0`;
+      fetch(url, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        authorization: `Token ${localStorage.authToken}`,
+      })
+        .then((res) => res.json())
+        .then((data) => this.setState({ articles: data.articles }));
+    }
+  };
+
   render() {
     let { username } = this.props;
 
@@ -42,7 +65,7 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-          <MyArticles username={username} />
+          <MyArticles username={username} handleArticles={(username) => this.handleArticles(username)}/>
         </div>
       </>
     );
