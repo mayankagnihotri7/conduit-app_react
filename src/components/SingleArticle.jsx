@@ -1,6 +1,7 @@
 import React from "react";
 import Comment from "./Comment";
 import Loader from "./Loader";
+import { Link, withRouter } from "react-router-dom";
 
 class SingleArticle extends React.Component {
   constructor(props) {
@@ -28,8 +29,8 @@ class SingleArticle extends React.Component {
   }
 
   handleUpdate = (boolean) => {
-    this.setState({isUpdated: boolean});
-  }
+    this.setState({ isUpdated: boolean });
+  };
 
   render() {
     let { articleInfo } = this.state;
@@ -58,6 +59,9 @@ class SingleArticle extends React.Component {
                 <h3 className="section-head">{articleInfo.title}</h3>
                 <p className="section-para">{articleInfo.body}</p>
                 <p>{articleInfo.tagList.map((tag) => tag)}</p>
+                <Link to={`/articles/edit/${this.state.slug}`}>
+                  <button>Edit Article</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -68,4 +72,4 @@ class SingleArticle extends React.Component {
   }
 }
 
-export default SingleArticle;
+export default withRouter(SingleArticle);

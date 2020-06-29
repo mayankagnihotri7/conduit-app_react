@@ -40,11 +40,9 @@ class Articles extends React.Component {
                         alt="coming-soon"
                         className="section-img"
                       />
-                      <Link to={`/profiles/${this.props.username.username}`}>
-                        <h3 className="section-user">
-                          {article.author.username}
-                        </h3>
-                      </Link>
+                      <h3 className="section-user">
+                        {article.author.username}
+                      </h3>
                       <h5 className="section-date">
                         {article.updatedAt.split("T")[0]}
                       </h5>

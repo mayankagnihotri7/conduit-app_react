@@ -8,6 +8,7 @@ import Main from "./components/Main";
 import Articles from "./components/Articles";
 import CreateArticle from "./components/CreateArticle";
 import SingleArticle from "./components/SingleArticle";
+import EditArticle from './components/EditArticle';
 import Profile from "./components/Profile";
 import Loader from "./components/Loader";
 import Footer from "./components/Footer";
@@ -114,7 +115,8 @@ class App extends React.Component {
               path="/profile"
               render={() => <Profile username={userInfo} />}
             />
-            <Route path="/articles/:slug" component={SingleArticle} />
+            <Route path='/articles/edit/:slug' component={EditArticle} />
+            <Route path="/articles/:slug" component={() => <SingleArticle username={this.state.userInfo}/>} />
             <Route component={Error} />
           </Switch>
         </div>

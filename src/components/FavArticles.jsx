@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import uuid from "react-uuid";
 
 class FavArticles extends Component {
-
   render() {
     let { articles } = this.props;
     if (!articles) {
@@ -23,7 +22,9 @@ class FavArticles extends Component {
               <li>
                 {this.props.filtered !== "myArticles" ? (
                   <button
-                    onClick={() => this.props.handleArticles(this.props.filtered)}
+                    onClick={() =>
+                      this.props.handleArticles(this.props.filtered)
+                    }
                     className="header-btn header-switch"
                   >
                     Favorited
