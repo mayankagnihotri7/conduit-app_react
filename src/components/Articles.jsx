@@ -1,7 +1,7 @@
 import React from "react";
 import uuid from "react-uuid";
 import Tags from "./Tags";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Articles extends React.Component {
   render() {
@@ -40,9 +40,11 @@ class Articles extends React.Component {
                         alt="coming-soon"
                         className="section-img"
                       />
-                      <h3 className="section-user">
-                        {article.author.username}
-                      </h3>
+                      <Link to={`/profiles/${article.author.username}`}>
+                        <h3 className="section-user">
+                          {article.author.username}
+                        </h3>
+                      </Link>
                       <h5 className="section-date">
                         {article.updatedAt.split("T")[0]}
                       </h5>
@@ -69,4 +71,4 @@ class Articles extends React.Component {
 
 // asfaerfgw;
 
-export default withRouter(Articles);
+export default Articles;

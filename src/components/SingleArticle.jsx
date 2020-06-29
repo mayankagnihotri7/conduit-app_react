@@ -89,7 +89,11 @@ class SingleArticle extends React.Component {
               </div>
             </div>
           </div>
-          <Comment slug={this.state.slug} handleUpdate={this.handleUpdate} />
+          <Comment
+            slug={this.state.slug}
+            handleUpdate={this.handleUpdate}
+            userInfo={this.props.userInfo}
+          />
         </div>
       </>
     );

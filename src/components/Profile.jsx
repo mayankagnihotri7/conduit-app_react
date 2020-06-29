@@ -65,7 +65,10 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-          <MyArticles username={username} handleArticles={(username) => this.handleArticles(username)}/>
+          <MyArticles
+            username={username}
+            handleArticles={(username) => this.handleArticles(username)}
+          />
         </div>
       </>
     );

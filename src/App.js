@@ -10,6 +10,7 @@ import CreateArticle from "./components/CreateArticle";
 import SingleArticle from "./components/SingleArticle";
 import EditArticle from './components/EditArticle';
 import Profile from "./components/Profile";
+import ViewProfile from './components/ViewProfile';
 import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import "./style.css";
@@ -115,6 +116,7 @@ class App extends React.Component {
               path="/profile"
               render={() => <Profile username={userInfo} />}
             />
+            <Route path='/profiles/:profileSlug' component={ViewProfile} />
             <Route path='/articles/edit/:slug' component={EditArticle} />
             <Route path="/articles/:slug" render={() => <SingleArticle userInfo={this.state.userInfo}/>} />
             <Route component={Error} />
