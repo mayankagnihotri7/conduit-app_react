@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MyArticles from './MyArticles';
+import MyArticles from "./MyArticles";
 import Loader from "./Loader";
 
 class ViewProfile extends Component {
@@ -40,8 +40,42 @@ class ViewProfile extends Component {
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => res.json())
-        .then(((data) => this.setState({articles: data.articles})));
+        .then((data) => this.setState({ articles: data.articles }));
     }
+  };
+
+  handleFollow = (boolean) => {
+    const { profileSlug } = this.state;
+    let url = `https://conduit.productionready.io/api/profiles/${profileSlug}/follow`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Token ${localStorage.authToken}`,
+      },
+      body: JSON.stringify({ profile: this.state.profile }),
+    }).then((res) => {
+      if (res.status === 200) {
+        this.setState({ follow: true });
+      }
+    });
+  };
+
+  handleUnFollow = (boolean) => {
+    const { profileSlug } = this.state;
+    let url = `https://conduit.productionready.io/api/profiles/${profileSlug}/follow`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Token ${localStorage.authToken}`,
+      },
+      body: JSON.stringify({ profile: this.state.profile }),
+    }).then((res) => {
+      if (res.status === 200) {
+        this.setState({ follow: false });
+      }
+    });
   };
 
   render() {
@@ -61,6 +95,11 @@ class ViewProfile extends Component {
                 {username}
               </h3>
               <h5 className="section-date">{bio}</h5>
+              {this.state.follow !== true ? (
+                <button onClick={() => this.handleFollow(true)}>Follow</button>
+              ) : (
+                <button onClick={() => this.handleUnFollow(false)}>Unfollow</button>
+              )}
             </div>
           </div>
         </div>
