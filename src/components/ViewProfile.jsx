@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MyArticles from './MyArticles';
 import Loader from "./Loader";
 
 class ViewProfile extends Component {
@@ -6,6 +7,7 @@ class ViewProfile extends Component {
     super(props);
     this.state = {
       profile: null,
+      articles: null,
       profileSlug: props.match.params.profileSlug,
       follow: false,
     };
@@ -22,6 +24,26 @@ class ViewProfile extends Component {
       .then((data) => this.setState({ profile: data.profile }));
   }
 
+  handleArticles = (username) => {
+    if (username === "myArticles") {
+      let url = `https://conduit.productionready.io/api/articles?author=${username}&limit=5&offset=0`;
+      fetch(url, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => this.setState({ articles: data.articles }));
+    } else {
+      let url = `https://conduit.productionready.io/api/articles?favorited=${username}&limit=5&offset=0`;
+      fetch(url, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then(((data) => this.setState({articles: data.articles})));
+    }
+  };
+
   render() {
     if (!this.state.profile) {
       return <Loader />;
@@ -33,11 +55,7 @@ class ViewProfile extends Component {
       <div className="max-width">
         <div>
           <div className="border">
-            <img
-              src={image}
-              alt="coming-soon"
-              className="profile-image"
-            />
+            <img src={image} alt="coming-soon" className="profile-image" />
             <div className="margin-left">
               <h3 className="profile-name margin-top margin-left">
                 {username}
@@ -46,6 +64,10 @@ class ViewProfile extends Component {
             </div>
           </div>
         </div>
+        <MyArticles
+          username={username}
+          handleArticles={(username) => this.handleArticles(username)}
+        />
       </div>
     );
   }

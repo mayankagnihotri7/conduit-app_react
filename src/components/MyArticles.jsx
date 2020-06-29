@@ -12,9 +12,8 @@ class MyArticles extends Component {
   }
 
   componentDidMount() {
-    let { username } = this.props.username;
 
-    let url = `https://conduit.productionready.io/api/articles?author=${username}&limit=5&offset=0`;
+    let url = `https://conduit.productionready.io/api/articles?author=${this.props.username}&limit=5&offset=0`;
     fetch(url, {
       method: "GET",
       headers: { "Content-Type": "application/json" },

@@ -22,7 +22,6 @@ class Profile extends Component {
   }
 
   handleArticles = (username) => {
-    // let { username } = this.props.username;
     if (username === "myArticles") {
       let url = `https://conduit.productionready.io/api/articles?author=${username}&limit=5&offset=0`;
       fetch(url, {
