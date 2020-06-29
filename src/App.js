@@ -116,7 +116,7 @@ class App extends React.Component {
               render={() => <Profile username={userInfo} />}
             />
             <Route path='/articles/edit/:slug' component={EditArticle} />
-            <Route path="/articles/:slug" component={() => <SingleArticle username={this.state.userInfo}/>} />
+            <Route path="/articles/:slug" render={() => <SingleArticle userInfo={this.state.userInfo}/>} />
             <Route component={Error} />
           </Switch>
         </div>

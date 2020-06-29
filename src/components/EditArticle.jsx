@@ -29,9 +29,9 @@ class EditArticle extends Component {
         article[name] = value;
         this.setState({ article });
       } else {
-          value = value.split(',').map(tag => tag.trim());
-          article[name] = value;
-          this.setState({article})
+        value = value.split(",").map((tag) => tag.trim());
+        article[name] = value;
+        this.setState({ article });
       }
     }
   };
@@ -41,14 +41,16 @@ class EditArticle extends Component {
     const url = `https://conduit.productionready.io/api/articles/${slug}`;
     fetch(url, {
       method: "PUT",
-      headers: { "Content-Type": "application/json", authorization: `Token ${localStorage.authToken}` },
-      body: JSON.stringify({article: this.state.article})
-    }).then(res => {
-        console.log(res, 'inside res')
-        if (res.status === 200) {
-            this.props.history.push(`/articles/${slug}`)
-        }
-    })
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Token ${localStorage.authToken}`,
+      },
+      body: JSON.stringify({ article: this.state.article }),
+    }).then((res) => {
+      if (res.status === 200) {
+        this.props.history.push(`/articles/${slug}`);
+      }
+    });
   };
 
   render() {
@@ -90,7 +92,7 @@ class EditArticle extends Component {
             placeholder="Let's tag it.."
             name="tagList"
             onChange={this.handleInput}
-            value={tagList.join(', ')}
+            value={tagList.join(", ")}
           />
           <button onClick={this.handleSubmit}>Update</button>
         </div>

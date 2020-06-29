@@ -32,8 +32,25 @@ class SingleArticle extends React.Component {
     this.setState({ isUpdated: boolean });
   };
 
+  handleDelete = () => {
+    let { slug } = this.state;
+    const url = `https://conduit.productionready.io/api/articles/${slug}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Token ${localStorage.authToken}`,
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        return this.props.history.push("/");
+      }
+    });
+  };
+
   render() {
     let { articleInfo } = this.state;
+    let { username } = this.props.userInfo;
 
     if (!articleInfo) {
       return <Loader />;
@@ -52,16 +69,23 @@ class SingleArticle extends React.Component {
                 className="section-img"
               />
               <div className="margin-left">
-                <h3 className="section-user">{articleInfo.author.username}</h3>
+                <h3 className="section-user">{author.username}</h3>
                 <h5 className="section-date">
                   {articleInfo.updatedAt.split("T")[0]}
                 </h5>
                 <h3 className="section-head">{articleInfo.title}</h3>
                 <p className="section-para">{articleInfo.body}</p>
                 <p>{articleInfo.tagList.map((tag) => tag)}</p>
-                <Link to={`/articles/edit/${this.state.slug}`}>
-                  <button>Edit Article</button>
-                </Link>
+                {author.username === username ? (
+                  <div>
+                    <Link to={`/articles/edit/${this.state.slug}`}>
+                      <button>Edit Article</button>
+                    </Link>
+                    <button onClick={this.handleDelete}>Delete Article</button>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
