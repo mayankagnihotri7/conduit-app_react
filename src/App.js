@@ -11,6 +11,7 @@ import SingleArticle from "./components/SingleArticle";
 import EditArticle from './components/EditArticle';
 import Profile from "./components/Profile";
 import ViewProfile from './components/ViewProfile';
+import EditProfileSettings from './components/EditProfileSettings';
 import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import "./style.css";
@@ -118,6 +119,7 @@ class App extends React.Component {
             />
             <Route path='/profiles/:profileSlug' component={ViewProfile} />
             <Route path='/articles/edit/:slug' component={EditArticle} />
+            <Route path='/settings' component={EditProfileSettings} />
             <Route path="/articles/:slug" render={() => <SingleArticle userInfo={this.state.userInfo}/>} />
             <Route component={Error} />
           </Switch>

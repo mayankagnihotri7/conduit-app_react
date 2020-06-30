@@ -32,13 +32,13 @@ const NonAuthHeader = () => {
 const AuthHeader = () => {
 
   return (<>
-    <NavLink activeClassName="active" to="/signIn">
+    <NavLink activeClassName="active" to="/" exact>
       Home
     </NavLink>
     <NavLink activeClassName="active" to="/create">
       Create Article
     </NavLink>
-    <NavLink activeClassName="active" to="/signUp">
+    <NavLink activeClassName="active" to="/settings">
       Settings
     </NavLink>
     <NavLink activeClassName="active" to="/profile">
